@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <form method="post" aciton="./" class="content-form dodaj-produkt">
+        {% csrf_token %}
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {{ form.as_p }}
+        <div class="error">{{error}}</div>
+        <input type="submit" value="Dodaj">
+
+
+    </form>
+{% endblock %}
