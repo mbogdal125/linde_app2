@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, include, url
+from linde_app2.views import home_page
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -6,7 +7,7 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'linde_app2.views.home', name='home'),
+    url(r'^$', home_page, name='home'),
     # url(r'^linde_app2/', include('linde_app2.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
