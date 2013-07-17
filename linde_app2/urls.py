@@ -14,6 +14,7 @@ urlpatterns = patterns('',
 
     url(r'^users/', include('manage_users.urls')),
     url(r'^manage_data/', include('manage_data.urls')),
+    url(r'^stocktakings/', include('generate_stocktaking.urls')),
     # url(r'^linde_app2/', include('linde_app2.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

@@ -11,4 +11,4 @@ class Customers(ListView):
 
 class AddCustomer(CreateView):
     model = Customer
-
+    template_name = "manage_data/add_customer.html"
