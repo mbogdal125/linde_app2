@@ -18,12 +18,12 @@
 	{% endfor %}
 	{% if next_page_num < maxpage %}
 	<div id='next_page'>
-	<a href={% url home %}/{{next_page_num}}>Nastepna</a>
+	<a href={% url "home" next_page_num %}>Nastepna</a>
 	</div>
 	{% endif %}
 	{% if prev_page_num >= 0 %}
 	<div id='prev_page'>
-	<a href={% url home %}/{{prev_page_num}}>Poprzednia</a>
+	<a href={% url "home" prev_page_num %}>Poprzednia</a>
 	</div>
 	{% endif %}
 

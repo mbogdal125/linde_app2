@@ -14,7 +14,9 @@ class HomeView(ListView):
         page_number = 0
         if 'page_number' in self.kwargs:
             page_number = int(self.kwargs['page_number'])
-        maxpage = Stocktaking.objects.count() / self.scroll_size
+        maxpage = Stocktaking.objects.count() / self.scroll_size 
+        if Stocktaking.objects.count() % self.scroll_size != 0:
+            maxpage += 1
         context['prev_page_num'] = page_number - 1
         context['next_page_num'] = page_number + 1
         context['maxpage'] = maxpage

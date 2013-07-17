@@ -9,7 +9,7 @@ from manage_users.views import listUser
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', home_page, name='home'),
-
+    url(r'^(?P<page_number>\d+)$', home_page, name='home'),
 
 
     url(r'^users/', include('manage_users.urls')),
