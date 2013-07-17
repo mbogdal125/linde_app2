@@ -22,6 +22,7 @@ class Customer(models.Model):
     customer_number = models.CharField(max_length = 100, unique=True)
     name = models.CharField(max_length = 100)
     address = models.CharField(max_length = 100)
+    address2 = models.CharField(max_length = 100)
     phone = models.CharField(max_length = 100)
     headquaters = models.BooleanField()
     active = models.BooleanField()
