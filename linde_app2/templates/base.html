@@ -1,0 +1,48 @@
+{% load i18n %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+{% load staticfiles %}
+<head>
+
+    {% block extra-head %}{% endblock %}
+
+<link rel="stylesheet" href="{% static "linde.css" %}"/>
+<script type="text/javascript" src="{% static "menu.js" %}"></script>
+
+</head>
+
+<body>
+    <div id="header">
+        {% block header %}
+
+                    <ul class="menu" id="mainmenu">
+                    <li><a href={% url home %}>{% trans "Home" %}</a></li>
+                    <li><a href={% url list-customers %}>{% trans "Klienci" %}</a></li>
+                    <li><a href={% url generate-stocktaking %}>{% trans "Nowa inwentaryzacja" %}</a></li>
+                    <li><a href={% url list-user %}>{% trans "Wprowadź dane" %}</a></li>
+                    </ul>
+
+
+
+
+
+
+            {% if user.is_authenticated %}
+                {% trans "Zalogowany" %}: {{ user.username }}
+                (<a href={% url auth_logout %}>{% trans "Wyloguj" %}</a> |
+                <a href={% url auth_password_change %}>{% trans "Zmień hasło" %}</a>)
+            {% endif %}
+        {% endblock %}
+    </div>
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <div id="footer">
+        {% block footer %}
+        {% endblock %}
+    </div>
+</body>
+
+</html>

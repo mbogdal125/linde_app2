@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <body>
+	<table class="contenttable">
+	<tr>
+	<td>	Numer	</td>	<td>	Typ inwentaryzacji</td>	<td>	Data zakonczenia</td>	<td>	Status	</td>	<td>	Aktywna? </td>
+    </tr>
+	{% for stocktaking in object_list %}
+	<tr>
+	<td> {{ stocktaking.stocktaking_number }} </td>
+	<td> {{ stocktaking.type.description }} </td>
+	<td> {{ stocktaking.date|date:"Y-m-d" }} </td>
+	<td> {{ stocktaking.status }} </td>
+	<td> {{ stocktaking.active }} </td>
+	</tr>
+	{% endfor %}
+	{% if next_page_num < maxpage %}
+	<div id='next_page'>
+	<a href={% url home %}/{{next_page_num}}>Nastepna</a>
+	</div>
+	{% endif %}
+	{% if prev_page_num >= 0 %}
+	<div id='prev_page'>
+	<a href={% url home %}/{{prev_page_num}}>Poprzednia</a>
+	</div>
+	{% endif %}
+
+	</table>
+    </body>
+{% endblock %}

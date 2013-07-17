@@ -1,0 +1,50 @@
+body {
+	color: black;
+	width: 1024px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #F0F0F0;
+	}
+
+#login_wrap{
+	width: 400px;
+	height: 200px;
+	margin: auto;
+	background-color: #F7F7F7;
+	padding-top: 30px;
+	border-radius: 15px;
+	border-color: #347BD3;
+	border-width: 1px;
+	border-style: solid;
+}
+
+.contenttable{
+	width:1024px;
+	text-align: center;
+}
+
+#login{
+	width: 300px;
+	height: 90px;
+	vertical-align: middle;
+	text-align: center;
+	margin: auto;
+	border: none;
+}
+
+.menuitem {
+	color:#000000;
+	margin-left: 10px;
+	margin-right: 10px;
+	background-color:#aaa;
+	border-radius: 5px;
+	font-weight:bold;
+	text-decoration:none;
+}
+
+.menu > li{
+}
+
+.submenu {
+	display: none;
+}

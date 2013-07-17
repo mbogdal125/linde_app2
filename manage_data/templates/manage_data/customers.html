@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <body>
+	<table class="contenttable">
+	<tr>
+	<td> Numer</td>	<td> Nazwa	</td>	<td> Adres </td> <td> Telefon </td> <td> Siedziba glowna? </td>
+	</tr>
+	{% for customer in object_list %}
+	<tr>
+	<td>
+	{{ customer.customer_number }}
+	</td>
+	<td>
+	{{ customer.name }}
+	</td>
+	<td>
+	{{ customer.address }}
+	</td>
+	<td>
+	{{ customer.phone }}
+	</td>
+	<td>
+	{{ customer.headquaters }}
+	</td>
+	</tr>	
+	{% endfor %}
+	</table>
+	
+	<FORM action= {% url add-customer %}>
+	<input type="submit" value="dodaj">
+	</FORM>
+    </body>
+{% endblock %}
