@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+
+    <form method="post" aciton="./" class="add-form dodaj-klienta">
+        {% csrf_token %}
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {{ form.as_p }}
+
+        <!--<label>
+            <div>Imię i nazwisko: </div> <input type="text" name="name" id="name" value="{{name}}">
+        </label>
+        <label>
+            <div>Adres: </div> <input type="text" name="address" id="address" value="{{address}}">
+        </label>
+        <label>
+            <div>Telefon: </div> <input type="text" name="address" id="phone" value="{{phone}}">
+        </label>
+        <label>
+            <div>Headquaters: </div> <input checked="checked" type="checkbox" name="headquaters"  id="headquaters" value={{headquaters}} />
+        </label>
+        <label>
+            <div>Aktywny: </div> <input checked="checked" type="checkbox" name="active"  id="active" value={{active}} />
+        </label>-->
+
+        <div class="error">{{error}}</div>
+        <input type="submit" value="Dodaj">
+        {% if messages %}
+            <ul class="messages">
+
+            </ul>
+        {% endif %}
+        <div class="address-error-message"></div>
+
+
+
+    </form>
+
+{% endblock %}

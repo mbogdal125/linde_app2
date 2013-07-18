@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <body>
+	<table class="contenttable">
+	<tr>
+	<td> Nazwa </td> <td> Grupa </td> <td> Typ </td>
+	</tr>
+	{% for type in object_list %}
+	<tr>
+	<td>
+	{{ type.description }}
+	</td>
+	<td>
+	{{ type.id_gas_cylinder_group.description }}
+	</td>
+	<td>
+	{{ type.gas_cylinder_typecol }}
+	</td>
+	</tr>	
+	{% endfor %}
+	</table>
+	
+	<FORM action= {% url "add-gastype" %}>
+	<input type="submit" value="dodaj">
+	</FORM>
+    </body>
+{% endblock %}

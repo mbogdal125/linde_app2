@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <body>
+	<table class="contenttable">
+	<tr>
+    <td> Typ Butli </td> <td> Ilosc wprowadzona </td> <td> Ilosc uzgodniona </td>
+    </tr>
+	{% for stockitem in object_list %}
+	<tr>
+	<td> {{ stockitem.id_gas_cylinder_type.description }} </td>
+	<td> {{ stockitem.amount_real }} </td>
+	<td> {{ stockitem.amount_real_agreed }} </td>
+	</tr>
+	{% endfor %}
+	{% if next_page_num < maxpage %}
+	<div id='next_page'>
+	<a href={% url "home" next_page_num %}>Nastepna</a>
+	</div>
+	{% endif %}
+	{% if prev_page_num >= 0 %}
+	<div id='prev_page'>
+	<a href={% url "home" prev_page_num %}>Poprzednia</a>
+	</div>
+	{% endif %}
+
+	</table>
+    </body>
+{% endblock %}
