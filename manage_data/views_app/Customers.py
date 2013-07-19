@@ -24,6 +24,7 @@ class AddCustomer(FormView):
         Cust.address = form.cleaned_data['address']
         Cust.address2 = form.cleaned_data['address2']
         Cust.phone = form.cleaned_data['phone']
+        Cust.nip = form.cleaned_data['nip']
         Cust.headquaters = form.cleaned_data['headquaters']
         Cust.active = True
         Cust.save()

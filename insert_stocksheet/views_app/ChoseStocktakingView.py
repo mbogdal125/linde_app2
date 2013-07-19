@@ -4,8 +4,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import RequestContext, loader
 
-class InsertStockdataView(ListView):
-    template_name = "insert_stocksheet/liststocktaking.html"
+class ChoseStocktakiginView(ListView):
+    template_name = "insert_stocksheet/chosestocktaking.html"
     model = Stocktaking
     scroll_size = 50
 

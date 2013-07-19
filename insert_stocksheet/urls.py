@@ -1,12 +1,13 @@
 from django.conf.urls import patterns, include, url
-from insert_stocksheet.views import insertstockdata
+from insert_stocksheet.views import insertstockdata, chosestocksheet
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^insert_stockdata/$', insertstockdata, name='insert-stockdata'),
+    url(r'^chose_stocktaking/$', insertstockdata, name='chose-stocktaking'),
+    url(r'^chose_stocksheet/(?P<stocktaking_number>\d+)$', chosestocksheet, name='chose-stocksheet'),
     # Examples:
     # url(r'^linde_app2/', include('linde_app2.foo.urls')),
 

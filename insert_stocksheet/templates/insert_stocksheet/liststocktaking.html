@@ -5,7 +5,7 @@
     <body>
 	<table class="contenttable">
 	<tr>
-	<td>	Numer	</td>	<td>	Typ inwentaryzacji</td>	<td>	Data zakonczenia</td>	<td>	Status	</td>	<td>	Aktywna? </td> <td> Szczegoly </td>
+	<td>	Numer	</td>	<td>	Typ inwentaryzacji</td>	<td>	Data zakonczenia</td>	<td>	Status	</td>	<td>	Aktywna? </td> <td> Arkusze </td>
     </tr>
 	{% for stocktaking in object_list %}
 	<tr>
@@ -14,7 +14,7 @@
 	<td> {{ stocktaking.date|date:"Y-m-d" }} </td>
 	<td> {{ stocktaking.status }} </td>
 	<td> {{ stocktaking.active }} </td>
-    <td> <form action={% url "stocktaking" stocktaking.stocktaking_number %}><input type="submit" value="Pokaz"></form></td>
+    <td> <form action={% url "chose-stocksheet" stocktaking.stocktaking_number %}><input type="submit" value="Pokaz"></form></td>
 	</tr>
 	{% endfor %}
 	{% if next_page_num < maxpage %}

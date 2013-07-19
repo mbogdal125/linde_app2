@@ -24,6 +24,7 @@ class Customer(models.Model):
     address = models.CharField(max_length = 100)
     address2 = models.CharField(max_length = 100)
     phone = models.CharField(max_length = 100)
+    nip = models.CharField(max_length = 100)
     headquaters = models.BooleanField()
     active = models.BooleanField()
     def __unicode__(self):
