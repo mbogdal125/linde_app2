@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <body>
+	<table class="contenttable">
+	<tr>
+    <td> Typ Butli </td> <td> Ilosc wprowadzona </td> <td> Ilosc uzgodniona </td>
+    </tr>
+    {% for item in items %}
+        {{ item.name }}
+        {{ item.form.as_p }}
+    {% endfor %}
+	{% for stockitem in object_list %}
+	<tr>
+	<td> {{ stockitem.id_gas_cylinder_type.description }} </td>
+	<td> {{ stockitem.amount_real }} </td>
+	<td> {{ stockitem.amount_real_agreed }} </td>
+	</tr>
+	{% endfor %}
+
+	</table>
+    </body>
+{% endblock %}
