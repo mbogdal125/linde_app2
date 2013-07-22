@@ -1,0 +1,46 @@
+TODO list:
+
+
+- agree information :
+    + only for the stockitems that very between amount_real and amount_sap
+
+
+- pdf generation:
+    + based on some python module
+    + single stocksheet generation
+    + generation for entire stocktaking PDF
+
+- returns aplication:
+    + managment of return statuses
+    + adding returns
+    + making archival posts
+
+- status changing:
+    + automated changing of status from rozpoczeta to wpisana on stocktakings
+    + color based views on the actions performed
+
+- authentication module based on AD:
+    + adding new users with no rights
+    + creating decorators for the application
+    + creating managment module
+    
+
+- reports:
+    + ???
+
+- logging information:
+    + database changes to allow adding users for insert, approve, modify
+    + modification is seting archival on the field and assigns another database row
+
+- approve information:
+    + adding owner to approve operation
+    + supporting owner api
+
+- edit support:
+    + for wrongly inputed data (done as you can insert data as long as status does 
+        not go to the agreed)
+    + edit user privilages
+
+- managment module:
+    + user privilages module
+
