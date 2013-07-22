@@ -14,7 +14,7 @@
 	<td> {{ stocksheet.status }} </td>
 	<td> {{ stocksheet.stocktaking_date|date:"Y-m-d" }} </td>
 	<td> {{ stocksheet.notes }} </td>
-    <td><form action={% url "insert-stocksheetdata" stocksheet.stock_sheet_number %}><input type="submit" value="Wprowadz"></form></td>
+    <td><form action={% url action stocksheet.stock_sheet_number %}><input type="submit" value="Wprowadz"></form></td>
 	</tr>
 	{% endfor %}
 	{% if next_page_num < maxpage %}

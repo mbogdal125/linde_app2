@@ -1,9 +1,7 @@
 TODO list:
 
-
 - agree information :
     + only for the stockitems that very between amount_real and amount_sap
-
 
 - pdf generation:
     + based on some python module
@@ -23,10 +21,11 @@ TODO list:
     + adding new users with no rights
     + creating decorators for the application
     + creating managment module
-    
 
 - reports:
-    + ???
+    + amount real > amount sap etc relation
+    + counts of returns
+    + counts of correct
 
 - logging information:
     + database changes to allow adding users for insert, approve, modify

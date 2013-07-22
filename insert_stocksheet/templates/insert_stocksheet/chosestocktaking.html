@@ -14,7 +14,7 @@
 	<td> {{ stocktaking.date|date:"Y-m-d" }} </td>
 	<td> {{ stocktaking.status }} </td>
 	<td> {{ stocktaking.active }} </td>
-    <td> <form action={% url "chose-stocksheet" stocktaking.stocktaking_number %}><input type="submit" value="Pokaz"></form></td>
+    <td> <form action={% url action stocktaking.stocktaking_number %}><input type="submit" value="Pokaz"></form></td>
 	</tr>
 	{% endfor %}
 	{% if next_page_num < maxpage %}

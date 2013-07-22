@@ -8,6 +8,7 @@ class ChoseStocktakingView(ListView):
     template_name = "insert_stocksheet/chosestocktaking.html"
     model = Stocktaking
     scroll_size = 50
+    action = "chose-stocksheet"
 
     def get_context_data(self, **kwargs):
         context = super(ChoseStocktakingView, self).get_context_data(**kwargs)
@@ -20,6 +21,7 @@ class ChoseStocktakingView(ListView):
         context['prev_page_num'] = page_number - 1
         context['next_page_num'] = page_number + 1
         context['maxpage'] = maxpage
+        context['action'] = self.action
         return context
     
     def get_queryset(self):
