@@ -145,7 +145,6 @@ INSTALLED_APPS = (
     'manage_data',
     'manage_users',
     'registration',
-    'javascript_settings',
     'linde_app2',
     'manage_users',
     'manage_data',
