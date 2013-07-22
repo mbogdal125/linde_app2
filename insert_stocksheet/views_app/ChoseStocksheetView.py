@@ -9,5 +9,5 @@ class ChoseStocksheetView(ListView):
     model = StockSheet
 
     def get_queryset(self):
-        queryset = StockSheet.objects.order_by('-stock_sheet_number').filter(id_stocktaking__stocktaking_number=self.kwargs['stocktaking_number']).prefetch_related('id_customer', 'status')
+        queryset = StockSheet.objects.order_by('-stock_sheet_number').filter(id_stocktaking__stocktaking_number=self.kwargs['stocktaking_number'],status__lte=2).prefetch_related('id_customer', 'status')
         return queryset

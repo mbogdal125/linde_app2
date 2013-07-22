@@ -1,17 +1,11 @@
 from django.views.generic import TemplateView
 from django.forms.formsets import BaseFormSet
 from django.forms import ModelForm
-from linde_app2.models import StockSheet, StockItem
+from linde_app2.models import StockSheet, StockItem, Stocktaking
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import RequestContext, loader
-from insert_stocksheet.forms import testform
 from django.forms.formsets import formset_factory
-
-class TestForm(ModelForm):
-    class Meta:
-        model = StockItem
-        fields = ['amount_real']
 
 class InsertForm():
     def __init__(self, i):
@@ -24,9 +18,18 @@ class InsertDataView(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super(InsertDataView, self).get_context_data(**kwargs)
-        test = StockItem.objects.filter(id_stock_sheet__stock_sheet_number = kwargs['stocksheet_number'])
-        context['items'] = [] 
-        for i in test:
-            cur_form = InsertForm(i)
-            context['items'].append(cur_form)
+        if "stocksheet_number" in kwargs:
+            context['stocksheet_number'] = kwargs['stocksheet_number']
+        context['items'] =  StockItem.objects.filter(id_stock_sheet__stock_sheet_number = kwargs['stocksheet_number'])
         return context
+
+    def post(self, request, **kwargs):
+        response = ""
+        post = request._get_post()
+        stocksheet = StockSheet.objects.get(stock_sheet_number=kwargs['stocksheet_number'])
+        if "stocksheet_number" in kwargs:
+            items = StockItem.objects.filter(id_stock_sheet__stock_sheet_number = kwargs['stocksheet_number'])
+            for i in items:
+                StockItem.objects.filter(id = i.id).update(amount_real = post[str(i.id)])
+            StockSheet.objects.filter(stock_sheet_number=kwargs['stocksheet_number']).update(status=2)
+        return redirect('chose-stocksheet', stocksheet.id_stocktaking.stocktaking_number)

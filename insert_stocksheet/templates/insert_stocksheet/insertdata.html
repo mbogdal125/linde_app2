@@ -5,19 +5,17 @@
     <body>
 	<table class="contenttable">
 	<tr>
-    <td> Typ Butli </td> <td> Ilosc wprowadzona </td> <td> Ilosc uzgodniona </td>
     </tr>
+    <form method=POST>
+    {% csrf_token %}
+    <input name="number_stocksheet" type="hidden" value={{ number_stocksheet }}>
     {% for item in items %}
-        {{ item.name }}
-        {{ item.form.as_p }}
+        {{ item.id_gas_cylinder_type.description }}
+        <input name="{{ item.id }}" type="number" value="{{ item.amount_real }}"/>
+        <br>
     {% endfor %}
-	{% for stockitem in object_list %}
-	<tr>
-	<td> {{ stockitem.id_gas_cylinder_type.description }} </td>
-	<td> {{ stockitem.amount_real }} </td>
-	<td> {{ stockitem.amount_real_agreed }} </td>
-	</tr>
-	{% endfor %}
+    <input type="submit" value="zapisz">
+    </form>
 
 	</table>
     </body>
