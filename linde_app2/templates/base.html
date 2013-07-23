@@ -22,9 +22,8 @@
                     <li><a href={% url "list-gastypes" %}>{% trans "Rodzaje Butli" %}</a></li>
                     <li><a href={% url "list-gasgroups" %}>{% trans "Grupy Butli" %}</a></li>
                     <li><a href={% url "chose-stocktaking" %}>{% trans "Wprowdz Dane" %}</a></li>
-                    <li><a href={% url "agree-chose-stocktaking" %}>{% trans "Zatwierdz Dane" %}</a></li>
+                    <li><a href={% url "agree-chose-stocktaking" %}>{% trans "Ustalanie Danych" %}</a></li>
                     <li><a href={% url "generate-stocktaking" %}>{% trans "Nowa inwentaryzacja" %}</a></li>
-                    <li><a href={% url "list-user" %}>{% trans "Lista uzytkownikow" %}</a></li>
                     </ul>
 
 
@@ -32,11 +31,6 @@
 
 
 
-            {% if user.is_authenticated %}
-                {% trans "Zalogowany" %}: {{ user.username }}
-                (<a href={% url auth_logout %}>{% trans "Wyloguj" %}</a> |
-                <a href={% url auth_password_change %}>{% trans "Zmień hasło" %}</a>)
-            {% endif %}
         {% endblock %}
     </div>
     <div id="content">

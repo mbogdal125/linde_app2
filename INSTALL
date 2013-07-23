@@ -1,0 +1,10 @@
+1) install python2.7
+2) install django at version 1.5.1
+3) install mysql database and client
+4) create database for django
+5) configure django user to have all rights for the database
+6) provide information in settings.py for connection
+7) provide the phisical location of static files in settings.py
+8) provide phisical location of project in settings.py
+9) install and configure apache client to redirect site address
+10) configre apache to correctly redirect static files

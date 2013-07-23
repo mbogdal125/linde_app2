@@ -11,7 +11,9 @@ TODO list:
     + color based views on the actions performed
 
 - agree_stocksheet:
+    + automated based if all the sap data = amounts_real
     + only for the stockitems that very between amount_real and amount_sap
+    + notes can be added there for stocksheets
     + add actual changing logic
     + add logic to prevent unwanted changing of data
     + add agree user to the model so it can be inserted during process
@@ -19,6 +21,8 @@ TODO list:
     + color based views on the actions performed
 
 - approve information:
+    + only for the stocksheets with all fields agreed
+    + decorator to view and approve
     + adding owner to approve operation
     + supporting owner api
     + color based views on the actions performed
