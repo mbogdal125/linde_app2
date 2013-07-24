@@ -31,4 +31,8 @@ class ChoseStocktakingView(ListView):
             page_number = int(self.kwargs['page_number'])
         offset = page_number * self.scroll_size
         queryset = Stocktaking.objects.order_by('-stocktaking_number').filter(status__id=3).prefetch_related('type', 'status')[offset:offset + self.scroll_size]
+        for item in queryset:
+            if item.status == StocktakingStatus.objects.get(id=4):
+                item.processed = True
+
         return queryset

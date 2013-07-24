@@ -9,9 +9,9 @@
     </tr>
 	{% for stocksheet in object_list %}
     {% if stocksheet.processed %}
-	<tr class="chose-stocktaking-processed">
+	<tr class="chose-stocksheet-processed">
     {% else %}
-	<tr class="chose-stocktaking-unprocessed">
+	<tr class="chose-stocksheet-unprocessed">
     {% endif %}
 	<td> {{ stocksheet.stock_sheet_number }} </td>
 	<td> {{ stocksheet.id_customer.name }} </td>

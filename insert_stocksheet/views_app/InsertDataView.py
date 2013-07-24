@@ -1,7 +1,7 @@
 from django.views.generic import TemplateView
 from django.forms.formsets import BaseFormSet
 from django.forms import ModelForm
-from linde_app2.models import StockSheet, StockItem, Stocktaking
+from linde_app2.models import StockSheet, StockItem, Stocktaking, StocktakingStatus
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import RequestContext, loader
@@ -34,4 +34,11 @@ class InsertDataView(TemplateView):
                 StockItem.objects.filter(id = i.id).update(amount_real = post[str(i.id)])
             StockSheet.objects.filter(stock_sheet_number=kwargs['stocksheet_number']).update(status=2)
             StockSheet.objects.filter(stock_sheet_number=kwargs['stocksheet_number']).update(stockTakingDate=datetime.now())
+        #if its last one we will change stocktaking status to inserted
+        if StockSheet.objects.filter(stock_sheet_number=kwargs['stocksheet_number'], status=1).count() == 0:
+            stocktaking = Stocktaking.objects.get(id=stocksheet.id_stocktaking.id)
+            stocktaking.status=StocktakingStatus.objects.get(id=3)
+            stocktaking.save()
+            return redirect('chose-stocktaking')
+
         return redirect('chose-stocksheet', stocksheet.id_stocktaking.stocktaking_number)

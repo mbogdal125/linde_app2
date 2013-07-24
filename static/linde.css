@@ -23,6 +23,14 @@ body {
 	text-align: center;
 }
 
+.chose-stocksheet-processed{
+    background-color: #CFC;
+}
+
+.chose-stocksheet-unprocessed{
+    background-color: #FCC;
+}
+
 .chose-stocktaking-processed{
     background-color: #CFC;
 }

@@ -8,7 +8,11 @@
 	<td>	Numer	</td>	<td>	Typ inwentaryzacji</td>	<td>	Data zakonczenia</td>	<td>	Status	</td>	<td>	Aktywna? </td> <td> Arkusze </td>
     </tr>
 	{% for stocktaking in object_list %}
-	<tr>
+    {% if stocktaking.processed %}
+    <tr class="chose-stocktaking-processed">
+    {% else %}
+    <tr class="chose-stocktaking-unprocessed">
+    {% endif %}
 	<td> {{ stocktaking.stocktaking_number }} </td>
 	<td> {{ stocktaking.type.description }} </td>
 	<td> {{ stocktaking.date|date:"Y-m-d" }} </td>
