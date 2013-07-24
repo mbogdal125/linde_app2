@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import RequestContext, loader
 from django.forms.formsets import formset_factory
+from datetime import datetime
 
 class InsertForm():
     def __init__(self, i):
@@ -32,4 +33,5 @@ class InsertDataView(TemplateView):
             for i in items:
                 StockItem.objects.filter(id = i.id).update(amount_real = post[str(i.id)])
             StockSheet.objects.filter(stock_sheet_number=kwargs['stocksheet_number']).update(status=2)
+            StockSheet.objects.filter(stock_sheet_number=kwargs['stocksheet_number']).update(stockTakingDate=datetime.now())
         return redirect('chose-stocksheet', stocksheet.id_stocktaking.stocktaking_number)

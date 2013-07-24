@@ -12,7 +12,7 @@
 	<td> {{ stocksheet.stock_sheet_number }} </td>
 	<td> {{ stocksheet.id_customer.name }} </td>
 	<td> {{ stocksheet.status }} </td>
-	<td> {{ stocksheet.stocktaking_date|date:"Y-m-d" }} </td>
+	<td> {{ stocksheet.stockTakingDate|date:"Y-m-d" }} </td>
 	<td> {{ stocksheet.notes }} </td>
     <td><form action={% url "stocksheet" stocksheet.stock_sheet_number %}><input type="submit" value="Pokaz"></form></td>
 	</tr>
