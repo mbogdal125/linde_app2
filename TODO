@@ -8,24 +8,25 @@ TODO list:
 
 - insert_stocksheet:
     + automated changing of status from rozpoczeta to wpisana on stocktakings
-    + color based views on the actions performed
+    + adding insert operation in database
+    + automated agree if all the sap data = amounts_real for stocksheet
+    + automated agree if all the sap data = amounts_real for stocktaking
 
 - agree_stocksheet:
-    + automated based if all the sap data = amounts_real
-    + only for the stockitems that very between amount_real and amount_sap
+    + show only for the stockitems that very between amount_real and amount_sap
     + notes can be added there for stocksheets
     + add actual changing logic
     + add logic to prevent unwanted changing of data
     + add agree user to the model so it can be inserted during process
     + automated changing of status from wpisana to uzgodniona on stocktakings
-    + color based views on the actions performed
+    + adding agree operation in database
 
 - approve information:
-    + only for the stocksheets with all fields agreed
+    + actual approve logic
     + decorator to view and approve
     + adding owner to approve operation
     + supporting owner api
-    + color based views on the actions performed
+    + adding approve operation in database
 
 - returns:
     + managment of return statuses

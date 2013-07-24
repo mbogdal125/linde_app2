@@ -8,7 +8,7 @@ class ChoseStocktakingView(ListView):
     template_name = "chosestocktaking.html"
     model = Stocktaking
     scroll_size = 50
-    action = "chose-stocksheet"
+    action = "approve-chose-stocksheet"
 
     def get_context_data(self, **kwargs):
         context = super(ChoseStocktakingView, self).get_context_data(**kwargs)
@@ -30,5 +30,5 @@ class ChoseStocktakingView(ListView):
         if 'page_number' in self.kwargs:
             page_number = int(self.kwargs['page_number'])
         offset = page_number * self.scroll_size
-        queryset = Stocktaking.objects.filter(status__lte=1).order_by('-stocktaking_number').prefetch_related('type', 'status')[offset:offset + self.scroll_size]
+        queryset = Stocktaking.objects.order_by('-stocktaking_number').filter(status__id=3).prefetch_related('type', 'status')[offset:offset + self.scroll_size]
         return queryset
