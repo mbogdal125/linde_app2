@@ -16,4 +16,7 @@ class ChoseStocksheetView(ListView):
 
     def get_queryset(self):
         queryset = StockSheet.objects.order_by('-stock_sheet_number').filter(id_stocktaking__stocktaking_number=self.kwargs['stocktaking_number'],status__gte=2, status__lte=3).prefetch_related('id_customer', 'status')
+        for entry in queryset:
+            if entry.status == StockSheetStatus.objects.get(id=3):
+                entry.processed = True
         return queryset

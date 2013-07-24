@@ -8,7 +8,11 @@
     <td> Numer Arkusza </td> <td> Nazwa Klienta </td> <td> Status </td> <td> Data Inwentaryzacji </td> <td> Notatki </td> <td> Dane </td>
     </tr>
 	{% for stocksheet in object_list %}
-	<tr>
+    {% if stocksheet.processed %}
+	<tr class="chose-stocktaking-processed">
+    {% else %}
+	<tr class="chose-stocktaking-unprocessed">
+    {% endif %}
 	<td> {{ stocksheet.stock_sheet_number }} </td>
 	<td> {{ stocksheet.id_customer.name }} </td>
 	<td> {{ stocksheet.status }} </td>
