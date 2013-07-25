@@ -1,6 +1,5 @@
 
 from django import forms
-from django.contrib.admin.models import User
 
 class RegistrationForm(forms.Form):
     username = forms.RegexField(regex=r'^\w+$', max_length=30,
