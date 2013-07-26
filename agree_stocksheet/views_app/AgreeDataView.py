@@ -1,7 +1,7 @@
 from django.views.generic import TemplateView
 from django.forms.formsets import BaseFormSet
 from django.forms import ModelForm
-from linde_app2.models import StockSheet, StockItem, Stocktaking
+from linde_app2.models import StockSheet, StockItem, Stocktaking, StocktakingStatus
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import RequestContext, loader
@@ -35,4 +35,9 @@ class AgreeDataView(TemplateView):
             StockSheet.objects.filter(stock_sheet_number=kwargs['stocksheet_number']).update(status=3)
             if "notes" in post:
                 StockSheet.objects.filter(stock_sheet_number=kwargs['stocksheet_number']).update(notes=post["notes"])
-        return redirect('agree-chose-stocksheet', stocksheet.id_stocktaking.stocktaking_number)
+
+        if StockSheet.objects.filter(id_stocktaking__stocktaking_number=stocksheet.id_stocktaking.stocktaking_number, status=2):
+            return redirect('agree-chose-stocksheet', stocksheet.id_stocktaking.stocktaking_number)
+        stocksheet.id_stocktaking.status=StocktakingStatus.objects.get(id=3)
+        stocksheet.id_stocktaking.save()
+        return redirect('agree-chose-stocktaking')
