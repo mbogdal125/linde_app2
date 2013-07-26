@@ -5,7 +5,7 @@
     <body>
 	<table class="contenttable">
 	<tr>
-	<td>	Numer	</td>	<td>	Typ inwentaryzacji</td>	<td>	Data zakonczenia</td>	<td>	Status	</td>	<td>	Aktywna? </td> <td> Arkusze </td>
+	<td>	Numer	</td>	<td>	Typ inwentaryzacji</td>	<td>	Data zakonczenia</td>	<td>	Status	</td> <td> Arkusze </td>
     </tr>
 	{% for stocktaking in object_list %}
     {% if stocktaking.processed %}
@@ -17,7 +17,6 @@
 	<td> {{ stocktaking.type.description }} </td>
 	<td> {{ stocktaking.date|date:"Y-m-d" }} </td>
 	<td> {{ stocktaking.status }} </td>
-	<td> {{ stocktaking.active }} </td>
     <td> <form action={% url action stocktaking.stocktaking_number %}><input type="submit" value="Pokaz"></form></td>
 	</tr>
 	{% endfor %}

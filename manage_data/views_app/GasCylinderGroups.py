@@ -19,4 +19,4 @@ class AddGasGroup(FormView):
         GasGroup.description = form.cleaned_data['description']
         GasGroup.active = form.cleaned_data['active']
         GasGroup.save()
-        return redirect("list-gastypes")
+        return redirect("list-gasgroups")

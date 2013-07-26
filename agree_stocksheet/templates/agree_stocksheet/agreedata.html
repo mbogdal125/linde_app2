@@ -9,11 +9,24 @@
     <form method=POST>
     {% csrf_token %}
     <input name="number_stocksheet" type="hidden" value={{ number_stocksheet }}>
+        <table>
+        <tr>
+        <td>Nazwa Butli</td>
+        <td>Grupa Butli</td>
+        <td>Typ Butli</td>
+        <td>Ilosc Wpisana</td>
+        <td>Ilosc Uzgodniona</td>
+        </tr>
     {% for item in items %}
-        {{ item.id_gas_cylinder_type.description }}
-        <input name="{{ item.id }}" type="number" value="{{ item.amount_real_agreed }}"/>
-        <br>
+        <tr>
+        <td>{{ item.id_gas_cylinder_type.description }}</td>
+        <td>{{ item.id_gas_cylinder_type.id_gas_cylinder_group.description }}</td>
+        <td>{{ item.id_gas_cylinder_type.gas_cylinder_typecol }}</td>
+        <td>{{ item.amount_real }}</td>
+        <td><input name="{{ item.id }}" type="number" value="{{ item.amount_real_agreed }}"/></td>
+        <tr>
     {% endfor %}
+    </table>
     <br>
     {% trans "Notatki" %}
     <textarea cols="40" id="notes" name="notes" rows="10">{{ notes }}</textarea></p>
