@@ -13,16 +13,19 @@ def insert_role(self):
 def data_manager(self):
     if User.objects.filter(username=self.username).filter(usergroup__id_group__groupprivilege__privilege__privilege__exact='data_manager'):
         return True
-User.add_to_class("insert_role", insert_role)
-User.add_to_class("data_manager", data_manager)
+    User.add_to_class("insert_role", insert_role)
+    User.add_to_class("data_manager", data_manager)
 
 
 
 class Customer(models.Model):
     customer_number = models.CharField(max_length = 100, unique=True)
     name = models.CharField(max_length = 100)
-    address = models.CharField(max_length = 100)
-    address2 = models.CharField(max_length = 100)
+    street = models.CharField(max_length = 100)
+    city = models.CharField(max_length = 100)
+    postalcode = models.IntegerField(max_length = 6)
+    flat_number = models.IntegerField()
+    building_number = models.IntegerField()
     phone = models.CharField(max_length = 100)
     nip = models.CharField(max_length = 100)
     headquaters = models.BooleanField()

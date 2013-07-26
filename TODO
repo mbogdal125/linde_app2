@@ -7,17 +7,16 @@ TODO list:
         ~ generation for entire stocktaking PDF
 
 - insert_stocksheet:
-    + automated changing of status from rozpoczeta to wpisana on stocktakings
+    + decorator to view and approve
     + adding insert operation in database
     + automated agree if all the sap data = amounts_real for stocksheet
     + automated agree if all the sap data = amounts_real for stocktaking
 
 - agree_stocksheet:
+    + decorator to view and approve
     + show only for the stockitems that very between amount_real and amount_sap
     + notes can be added there for stocksheets
-    + add actual changing logic
     + add logic to prevent unwanted changing of data
-    + add agree user to the model so it can be inserted during process
     + automated changing of status from wpisana to uzgodniona on stocktakings
     + adding agree operation in database
 
@@ -29,6 +28,7 @@ TODO list:
     + adding approve operation in database
 
 - returns:
+    + decorator to view and approve
     + managment of return statuses
     + adding returns
     + making archival posts
@@ -40,15 +40,18 @@ TODO list:
     + creating managment module
 
 - reports:
+    + decorator to view and approve
     + amount real > amount sap etc relation
     + counts of returns
     + counts of correct
 
-
 - manage_data:
+    + decorator to view and approve
     + for wrongly inputed data (done as you can insert data as long as status does not go to the agreed)
     + edit user privilages
 
 - manage_user:
+    + decorator to view and approve
+    + admin backend for managing users
     + user privilages module
 

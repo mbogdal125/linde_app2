@@ -4,7 +4,7 @@ from linde_app2.models import Customer, GasCylinderType, GasCylinderGroup
 class AddCustomerForm(ModelForm):
     class Meta:
         model = Customer 
-        fields = ['name', 'address', 'address2', 'phone', 'nip', 'headquaters']
+        fields = ['name', 'street', 'city', 'postalcode', 'flat_number', 'building_number', 'phone', 'nip', 'headquaters']
     
 class AddGasTypeForm(ModelForm):
     class Meta:

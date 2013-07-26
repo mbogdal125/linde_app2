@@ -21,8 +21,11 @@ class AddCustomer(FormView):
         else:
             Cust.customer_number = Customer.objects.count()
         Cust.name = form.cleaned_data['name']
-        Cust.address = form.cleaned_data['address']
-        Cust.address2 = form.cleaned_data['address2']
+        Cust.street = form.cleaned_data['street']
+        Cust.city = form.cleaned_data['city']
+        Cust.postalcode = form.cleaned_data['postalcode']
+        Cust.flat_number = form.cleaned_data['flat_number']
+        Cust.building_number = form.cleaned_data['building_number']
         Cust.phone = form.cleaned_data['phone']
         Cust.nip = form.cleaned_data['nip']
         Cust.headquaters = form.cleaned_data['headquaters']

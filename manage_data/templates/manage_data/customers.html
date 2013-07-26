@@ -5,7 +5,7 @@
     <body>
 	<table class="contenttable">
 	<tr>
-	<td> Numer</td>	<td> Nazwa	</td>	<td> Adres </td> <td> Adres2 </td> <td> Nip </td>  <td> Telefon </td> <td> Siedziba glowna? </td>
+	<td> Numer</td>	<td> Nazwa	</td> <td> Adres </td> <td> Nip </td>  <td> Telefon </td> <td> Siedziba glowna? </td>
 	</tr>
 	{% for customer in object_list %}
 	<tr>
@@ -16,10 +16,7 @@
 	{{ customer.name }}
 	</td>
 	<td>
-	{{ customer.address }}
-	</td>
-	<td>
-	{{ customer.address2 }}
+	ul. {{ customer.street }} {{ customer.building_number }}/{{ customer.flat_number }} {{ customer.city }} {{ customer.postalcode }} 
 	</td>
 	<td>
 	{{ customer.nip }}
