@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import permission_required
 from django.forms.formsets import BaseFormSet
@@ -22,14 +23,20 @@ class InsertDataView(TemplateView):
         context = super(InsertDataView, self).get_context_data(**kwargs)
         if "stocksheet_number" in kwargs:
             context['stocksheet_number'] = kwargs['stocksheet_number']
-        context['items'] =  StockItem.objects.filter(id_stock_sheet__stock_sheet_number = kwargs['stocksheet_number'])
-        return context
+            context['items'] =  StockItem.objects.filter(id_stock_sheet__stock_sheet_number = kwargs['stocksheet_number'])
+            stocksheet = StockSheet.objects.get(stock_sheet_number = kwargs['stocksheet_number'])
+            if stocksheet.status.id > 2:
+                raise Http404
+            return context
+        return redirect('home')
 
     def post(self, request, **kwargs):
         response = ""
         post = request._get_post()
-        stocksheet = StockSheet.objects.get(stock_sheet_number=kwargs['stocksheet_number'])
         if "stocksheet_number" in kwargs:
+            stocksheet = StockSheet.objects.get(stock_sheet_number=kwargs['stocksheet_number'])
+            if stocksheet.status.id > 2:
+                raise Http404
             items = StockItem.objects.filter(id_stock_sheet__stock_sheet_number = kwargs['stocksheet_number'])
             for i in items:
                 StockItem.objects.filter(id = i.id).update(amount_real = post[str(i.id)])
