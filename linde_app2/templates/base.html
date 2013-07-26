@@ -3,6 +3,10 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 {% load staticfiles %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet" media="screen">
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="{% static "js/button.js" %}"></script>
 <head>
 
     {% block extra-head %}{% endblock %}
@@ -16,16 +20,16 @@
     <div id="header">
         {% block header %}
 
-                    <ul class="menu" id="mainmenu">
-                    <li><a href={% url "home" %}>{% trans "Home" %}</a></li>
-                    <li><a href={% url "list-customers" %}>{% trans "Klienci" %}</a></li>
-                    <li><a href={% url "list-gastypes" %}>{% trans "Rodzaje Butli" %}</a></li>
-                    <li><a href={% url "list-gasgroups" %}>{% trans "Grupy Butli" %}</a></li>
-                    <li><a href={% url "chose-stocktaking" %}>{% trans "Wprowdz Dane" %}</a></li>
-                    <li><a href={% url "agree-chose-stocktaking" %}>{% trans "Ustalanie Danych" %}</a></li>
-                    <li><a href={% url "approve-chose-stocktaking" %}>{% trans "Zatwierdzenie Danych" %}</a></li>
-                    <li><a href={% url "generate-stocktaking" %}>{% trans "Nowa inwentaryzacja" %}</a></li>
-                    </ul>
+                    <div class="btn-group" id="mainmenu">
+                    <button class="btn" data-href={% url "home" %}>{% trans "Home" %}</button>
+                    <button class="btn" data-href={% url "list-customers" %}>{% trans "Klienci" %}</button>
+                    <button class="btn" data-href={% url "list-gastypes" %}>{% trans "Rodzaje Butli" %}</button>
+                    <button class="btn" data-href={% url "list-gasgroups" %}>{% trans "Grupy Butli" %}</button>
+                    <button class="btn" data-href={% url "chose-stocktaking" %}>{% trans "Wprowdz Dane" %}</button>
+                    <button class="btn" data-href={% url "agree-chose-stocktaking" %}>{% trans "Ustalanie Danych" %}</button>
+                    <button class="btn" data-href={% url "approve-chose-stocktaking" %}>{% trans "Zatwierdzenie Danych" %}</button>
+                    <button class="btn" data-href={% url "generate-stocktaking" %}>{% trans "Nowa inwentaryzacja" %}</button>
+                    </div>
 
 
 
