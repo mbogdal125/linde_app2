@@ -3,3 +3,7 @@ $( function() {
         location.href = $(this).attr("data-href");
     });
 });
+
+$(function() {
+	$( ".datepicker" ).datepicker();
+});
