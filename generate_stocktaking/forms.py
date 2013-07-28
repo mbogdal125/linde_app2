@@ -6,8 +6,8 @@ from datetime import datetime
 def custom_datefield_for_form(f):
 	field = f.formfield()
 	if isinstance(f, models.DateField):
-		field.widget.format ='%d/%m/%Y'
-		field.widget.attrs.update({'class':'datepicker', 'value':datetime.today().strftime('%d/%m/%Y'), 'data-date-format':'dd/mm/yyyy'})
+		field.widget.format ='%Y-%m-%d'
+		field.widget.attrs.update({'class':'datepicker', 'value':datetime.today().strftime('%Y-%m-%d'), 'data-date-format':'yyyy-mm-dd'})
 	return field
 
 class GenStocktakingForm(ModelForm):
