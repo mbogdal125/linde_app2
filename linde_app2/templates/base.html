@@ -9,6 +9,7 @@
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="{% static "js/bootstrap-datepicker.js" %}"></script>
 <script src="{% static "js/button.js" %}"></script>
+<script src="{% static "js/bootstrap-dropdown.js" %}"></scirpt>
 <head>
 
     {% block extra-head %}{% endblock %}
@@ -19,6 +20,7 @@
 </head>
 
 <body>
+    <div class="container">
     <div id="header">
         {% block header %}
 
@@ -31,6 +33,18 @@
                     <button class="btn" data-href={% url "agree-chose-stocktaking" %}>{% trans "Ustalanie Danych" %}</button>
                     <button class="btn" data-href={% url "approve-chose-stocktaking" %}>{% trans "Zatwierdzenie Danych" %}</button>
                     <button class="btn" data-href={% url "generate-stocktaking" %}>{% trans "Nowa inwentaryzacja" %}</button>
+                    <div class="btn-group">
+                    {% if user.is_authenticated %}
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                          {{ user.username }} <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url "logout" %}">{% trans "Logout" %}</a></li>
+                        </ul>
+                        {% else %}
+            
+                        {% endif %}
+                    </div>
                     </div>
 
 
@@ -47,6 +61,7 @@
     <div id="footer">
         {% block footer %}
         {% endblock %}
+    </div>
     </div>
 </body>
 

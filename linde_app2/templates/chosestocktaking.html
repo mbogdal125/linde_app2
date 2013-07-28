@@ -2,10 +2,15 @@
 {% load i18n %}
 
 {% block content %}
-    <body>
-	<table class="contenttable">
+	<table class="table table-striped">
 	<tr>
-	<td>	Numer	</td>	<td>	Typ inwentaryzacji</td>	<td>	Data zakonczenia</td>	<td>	Status	</td> <td> Arkusze </td>
+	<td>	Numer	</td>
+    <td>	Typ inwentaryzacji</td>
+    <td>	Data zakonczenia</td>
+    <td>	Status	</td>
+    {% if action %}
+    <td> Arkusze </td>
+    {% endif %}
     </tr>
 	{% for stocktaking in object_list %}
     {% if stocktaking.processed %}
@@ -17,7 +22,9 @@
 	<td> {{ stocktaking.type.description }} </td>
 	<td> {{ stocktaking.date|date:"Y-m-d" }} </td>
 	<td> {{ stocktaking.status }} </td>
+    {% if action%}
     <td> <form action={% url action stocktaking.stocktaking_number %}><input type="submit" value="Pokaz"></form></td>
+    {% endif %}
 	</tr>
 	{% endfor %}
 	{% if next_page_num < maxpage %}
@@ -32,5 +39,4 @@
 	{% endif %}
 
 	</table>
-    </body>
 {% endblock %}

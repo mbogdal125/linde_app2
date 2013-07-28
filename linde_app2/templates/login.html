@@ -1,0 +1,28 @@
+{% extends "base_secure.html" %}
+{% load i18n %}
+
+{% block content %}
+    {% if form.errors %}
+        <div class="alert">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <p> Wrong username or password! Nothing to see here, move along!</p>
+        </div>
+    {% endif %}
+    <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+    {% csrf_token %}
+        <fieldset>
+            <legend>Login</legend>
+                <div class="form-gorup"> 
+                    <label for="id_username">{% trans "Username" %}</label>
+                    <input type="text" class="form-control" id="id_username" name="username" placeholder="Username" />
+                </div>
+                <div class="form-group">
+                    <label for="id_password">{% trans "Password" %}</label>
+                    <input type="password" class="form-control" id="id_password" name="password" placeholder="Password" />
+                </div>
+            <input type="hidden" name="next" value="{{ next }}" />
+            <button type="submit" class="btn btn-primary">Login</button>
+        </fieldset>
+    </form>
+    </div>
+{% endblock %}

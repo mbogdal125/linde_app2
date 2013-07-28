@@ -3,12 +3,13 @@ from linde_app2.models import Stocktaking, StocktakingStatus, StocktakingType
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import RequestContext, loader
+from django.contrib.auth.decorators import login_required
 
 class HomeView(ListView):
-    template_name = "index.html"
+    template_name = "chosestocktaking.html"
     model = Stocktaking
     scroll_size = 50
-
+    
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
         page_number = 0
