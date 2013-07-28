@@ -1,10 +1,8 @@
 body {
-	color: black;
 	width: 1024px;
 	margin-left: auto;
 	margin-right: auto;
-	background-color: #F0F0F0;
-	}
+}
 
 #login_wrap{
 	width: 400px;
@@ -16,6 +14,17 @@ body {
 	border-color: #347BD3;
 	border-width: 1px;
 	border-style: solid;
+}
+
+.content {
+    width: 1024px;
+
+}
+
+.container{
+    margin-left: auto;
+    margin-right: auto;
+    width: 1024px;
 }
 
 .contenttable{

@@ -1,0 +1,41 @@
+{% load i18n %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+{% load staticfiles %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="{% static "css/bootstrap.css" %}" rel="stylesheet" media="screen">
+<link href="{% static "css/datepicker.css" %}" rel="stylesheet" media="screen">
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="{% static "js/bootstrap-datepicker.js" %}"></script>
+<script src="{% static "js/button.js" %}"></script>
+<head>
+
+    {% block extra-head %}{% endblock %}
+
+<link rel="stylesheet" href="{% static "linde.css" %}"/>
+<script type="text/javascript" src="{% static "menu.js" %}"></script>
+
+</head>
+
+<body>
+    <div class="container">
+    <div id="header">
+        {% block header %}
+        {% endblock %}
+    </div>
+    <div id="content">
+        {% block content %}
+
+
+        {% endblock %}
+    </div>
+
+    <div id="footer">
+        {% block footer %}
+        {% endblock %}
+    </div>
+    </div>
+</body>
+
+</html>
