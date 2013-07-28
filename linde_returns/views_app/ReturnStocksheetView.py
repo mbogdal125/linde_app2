@@ -1,4 +1,5 @@
 from django.http import Http404
+from django.contrib.auth.models import User
 from django.views.generic import FormView 
 from django.contrib.auth.decorators import permission_required
 from django.forms.formsets import BaseFormSet
@@ -24,6 +25,7 @@ class ReturnStocksheetView(FormView):
             ssheet.save()
             newret = SheetReturn()
             newret.return_type = form.cleaned_data['return_type']
-            newret.sheet_number = ssheet
+            newret.operator_id = self.request.user.id
+            newret.sheet_number = ssheet 
             newret.save()
         return redirect('returns-chose-stocktaking')
