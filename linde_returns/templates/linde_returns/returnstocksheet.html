@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <body>
+	<table class="contenttable">
+	<tr>
+    </tr>
+    <form method=POST>
+    {% csrf_token %}
+    {{ form.as_p }}
+    </table>
+    <input type="submit" value="zapisz">
+    </form>
+
+	</table>
+    </body>
+{% endblock %}

@@ -6,7 +6,7 @@ from django.forms.widgets import RadioSelect, CheckboxSelectMultiple
 class SheetReturnForm(forms.ModelForm):
     class Meta:
         model = SheetReturn
-        #fields = ['customer_number' ,'name' ,'address', 'phone', 'headquaters', 'active']
+        fields = ['return_type']
 
 
 class SearchFrom(forms.Form):
