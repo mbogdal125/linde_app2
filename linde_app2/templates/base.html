@@ -9,6 +9,7 @@
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="{% static "js/bootstrap-datepicker.js" %}"></script>
 <script src="{% static "js/button.js" %}"></script>
+<script src="{% static "js/bootstrap-dropdown.js" %}"></scirpt>
 <head>
 
     {% block extra-head %}{% endblock %}
@@ -19,8 +20,10 @@
 </head>
 
 <body>
+    <div class="container">
     <div id="header">
         {% block header %}
+        {% if user.is_authenticated %}
 
                     <div class="btn-group" id="mainmenu">
                     <button class="btn" data-href={% url "home" %}>{% trans "Home" %}</button>
@@ -32,13 +35,22 @@
                     <button class="btn" data-href={% url "approve-chose-stocktaking" %}>{% trans "Zatwierdzenie Danych" %}</button>
                     <button class="btn" data-href={% url "returns-chose-stocktaking" %}>{% trans "Zwrot Arkusza" %}</button>
                     <button class="btn" data-href={% url "generate-stocktaking" %}>{% trans "Nowa inwentaryzacja" %}</button>
-                    </div>
-
-
-
-
-
-
+                    <div class="btn-group">
+                    {% if user.is_authenticated %}
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                          {{ user.username }} <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url "logout" %}">{% trans "Logout" %}</a></li>
+                        </ul>
+                        {% else %}
+            
+                        {% endif %}
+                {% trans "Zalogowany" %}: {{ user.username }}
+                (<a href={% url auth_logout %}>{% trans "Wyloguj" %}</a> |
+                <a href={% url auth_password_change %}>{% trans "Zmień hasło" %}</a>)
+        {% else %}
+        {% endif %}
         {% endblock %}
     </div>
     <div id="content">
@@ -48,6 +60,7 @@
     <div id="footer">
         {% block footer %}
         {% endblock %}
+    </div>
     </div>
 </body>
 
