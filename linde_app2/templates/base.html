@@ -46,9 +46,7 @@
                         {% else %}
             
                         {% endif %}
-                {% trans "Zalogowany" %}: {{ user.username }}
-                (<a href={% url auth_logout %}>{% trans "Wyloguj" %}</a> |
-                <a href={% url auth_password_change %}>{% trans "Zmień hasło" %}</a>)
+                        </div>
         {% else %}
         {% endif %}
         {% endblock %}
