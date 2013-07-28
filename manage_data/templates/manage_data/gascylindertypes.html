@@ -3,7 +3,7 @@
 
 {% block content %}
     <body>
-	<table class="contenttable">
+	<table class="table table-striped">
 	<tr>
 	<td> Nazwa </td> <td> Grupa </td> <td> Typ </td>
 	</tr>
@@ -23,7 +23,7 @@
 	</table>
 	
 	<FORM action= {% url "add-gastype" %}>
-	<input type="submit" value="dodaj">
+	<input class="btn btn-defaul" type="submit" value="dodaj">
 	</FORM>
     </body>
 {% endblock %}

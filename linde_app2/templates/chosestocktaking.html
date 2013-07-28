@@ -23,7 +23,7 @@
 	<td> {{ stocktaking.date|date:"Y-m-d" }} </td>
 	<td> {{ stocktaking.status }} </td>
     {% if action%}
-    <td> <form action={% url action stocktaking.stocktaking_number %}><input type="submit" value="Pokaz"></form></td>
+    <td> <form action={% url action stocktaking.stocktaking_number %}><input class="btn btn-default" type="submit" value="Pokaz"></form></td>
     {% endif %}
 	</tr>
 	{% endfor %}

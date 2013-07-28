@@ -2,14 +2,10 @@
 {% load i18n %}
 
 {% block content %}
-    <body>
-	<table class="contenttable">
-	<tr>
-    </tr>
     <form method=POST>
     {% csrf_token %}
     <input name="number_stocksheet" type="hidden" value={{ number_stocksheet }}>
-        <table class="contenttable">
+        <table class="table table-striped">
         <tr>
         <td>Nazwa Butli</td>
         <td>Grupa Butli</td>
@@ -32,9 +28,6 @@
     <br />
     <textarea id="notes" name="notes" rows="3">{{ notes }}</textarea></p>
     <br>
-    <input type="submit" value="zapisz">
+    <input class="btn btn-defaul" type="submit" value="zapisz">
     </form>
-
-	</table>
-    </body>
 {% endblock %}

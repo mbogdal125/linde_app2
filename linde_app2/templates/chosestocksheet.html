@@ -3,7 +3,7 @@
 
 {% block content %}
     <body>
-	<table class="contenttable">
+	<table class="table table-striped">
 	<tr>
     <td> Numer Arkusza </td> <td> Nazwa Klienta </td> <td> Status </td> <td> Data Inwentaryzacji </td> <td> Notatki </td> <td> Dane </td>
     </tr>
@@ -18,7 +18,7 @@
 	<td> {{ stocksheet.status }} </td>
 	<td> {{ stocksheet.stockTakingDate|date:"Y-m-d" }} </td>
 	<td> {{ stocksheet.notes }} </td>
-    <td><form action={% url action stocksheet.stock_sheet_number %}><input type="submit" value="Wprowadz"></form></td>
+    <td><form action={% url action stocksheet.stock_sheet_number %}><input class="btn btn-defaul" type="submit" value="Wprowadz"></form></td>
 	</tr>
 	{% endfor %}
 	{% if next_page_num < maxpage %}
