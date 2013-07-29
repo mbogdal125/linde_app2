@@ -30,9 +30,17 @@
 	</tr>	
 	{% endfor %}
 	</table>
-	
+    <ul class="pager">
+    {% if page.has_previous %}	
+	<li><a href="{% url "list-customers" page.previous_page_number %}">previous</a></li>
+    {% endif %}
+    {% if page.has_next %}	
+	<li><a href="{% url "list-customers" page.next_page_number %}">next</a></li>
+	</FORM>
+    {% endif %}
 	<FORM action= {% url "add-customer" %}>
 	<input class="btn btn-defaul" type="submit" value="dodaj">
+    </ul>
 	</FORM>
     </body>
 {% endblock %}

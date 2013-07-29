@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 urlpatterns = patterns('',
 
+    url(r'^listcustomers/(?P<numpage>\d+)$', login_required(customers), name='list-customers'),
     url(r'^listcustomers/$', login_required(customers), name='list-customers'),
     url(r'^addcustomer/$', login_required(add_customer), name='add-customer'),
     url(r'^gastypes/$', login_required(gas_types), name='list-gastypes'),
