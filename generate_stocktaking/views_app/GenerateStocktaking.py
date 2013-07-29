@@ -39,15 +39,6 @@ class GenerateStocktaking(FormView):
             new_sheet.status = StockSheetStatus(1)
             new_sheet.archival = False
             new_sheet.save()
-            for cur_type in GasCylinderType.objects.all():
-                new_item = StockItem()
-                new_item.id_stock_sheet = new_sheet
-                new_item.id_gas_cylinder_type = cur_type
-                new_item.amount_real = 0
-                new_item.amount_real_agreed = 0
-                new_item.amount_sap_= 0
-                new_item.amount_sap_agreed = 0
-                new_item.save()
 
 
         return redirect('home')

@@ -21,17 +21,22 @@
     <td><form action={% url action stocksheet.stock_sheet_number %}><input class="btn btn-defaul" type="submit" value="Wprowadz"></form></td>
 	</tr>
 	{% endfor %}
-	{% if next_page_num < maxpage %}
-	<div id='next_page'>
-	<a href={% url "home" next_page_num %}>Nastepna</a>
-	</div>
-	{% endif %}
-	{% if prev_page_num >= 0 %}
-	<div id='prev_page'>
-	<a href={% url "home" prev_page_num %}>Poprzednia</a>
-	</div>
-	{% endif %}
-
 	</table>
+    <ul class="pager">
+    {% if page_action and stocktaking_number %}
+        {% if page.has_previous %}
+            <li><a href="{% url page_action stocktaking_number page.previous_page_number %}">previous</a></li>
+        {% endif %}
+        {% if page.has_next %}
+            <li><a href="{% url page_action stocktaking_number  page.next_page_number %}">next</a></li>
+        {% endif %}
+    {% else%}
+        {% if page.has_previous %}
+            <li><a href="{% url "list-customers" page.previous_page_number %}">previous</a></li>
+        {% endif %}
+        {% if page.has_next %}
+            <li><a href="{% url "list-customers" page.next_page_number %}">next</a></li>
+        {% endif %}
+    {% endif %}
     </body>
 {% endblock %}

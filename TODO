@@ -8,6 +8,8 @@ TODO list:
 
 - insert_stocksheet:
     + decorator to view and approve
+    + generating items only if value != 0
+    + paginator
     + automated agree if all the sap data = amounts_real for stocksheet
     + automated agree if all the sap data = amounts_real for stocktaking
 

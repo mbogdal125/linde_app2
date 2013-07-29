@@ -18,8 +18,6 @@ class Customers(ListView):
             self.page = p.page(self.kwargs['numpage'])
         else:
             self.page = p.page(1)
-        for i in self.page.object_list:
-            print i.name
         return self.page.object_list
 
     def get_context_data(self, **kwargs):

@@ -38,9 +38,9 @@
 	<li><a href="{% url "list-customers" page.next_page_number %}">next</a></li>
 	</FORM>
     {% endif %}
+    </ul>
 	<FORM action= {% url "add-customer" %}>
 	<input class="btn btn-defaul" type="submit" value="dodaj">
-    </ul>
 	</FORM>
     </body>
 {% endblock %}

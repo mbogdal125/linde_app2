@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 urlpatterns = patterns('',
     url(r'^chose_stocktaking/$', login_required(chosestocktaking), name='approve-chose-stocktaking'),
     url(r'^chose_stocksheet/(?P<stocktaking_number>\d+)$', login_required(chosestocksheet), name='approve-chose-stocksheet'),
+    url(r'^chose_stocksheet/(?P<stocktaking_number>\d+)/(?P<numpage>\d+)$', login_required(chosestocksheet), name='approve-chose-stocksheet'),
 #    url(r'^agreedata/(?P<stocksheet_number>\d+)$', agreestocksheetdata, name='agree-stocksheetdata'),
     # Examples:
     # url(r'^linde_app2/', include('linde_app2.foo.urls')),
