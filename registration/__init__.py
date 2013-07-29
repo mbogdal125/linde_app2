@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*
 
 from django.contrib.sites import models as site_models
 

@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*
 from django.views.generic import ListView
 from linde_app2.models import StockSheet, StockItem
 from django.shortcuts import render

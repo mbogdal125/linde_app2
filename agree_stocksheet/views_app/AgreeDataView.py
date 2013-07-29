@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*
 from django.http import Http404
 from django.views.generic import TemplateView
 from django.forms.formsets import BaseFormSet

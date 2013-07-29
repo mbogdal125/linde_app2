@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*
 from django.db import models
 from linde_app2.models import Customer, StockSheet
 from django.contrib.auth.models import User, UserManager

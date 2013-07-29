@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*
 from django.views.generic import ListView
 from django.views.generic.edit import FormView
 from django.contrib.auth.models import User

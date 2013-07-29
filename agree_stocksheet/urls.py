@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*
 from django.conf.urls import patterns, include, url
 from agree_stocksheet.views import chosestocktaking, chosestocksheet, agreestocksheetdata
 from django.contrib.auth.decorators import login_required

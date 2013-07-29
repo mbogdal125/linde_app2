@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*
 from manage_data.views_app.Customers import Customers, AddCustomer
 from manage_data.views_app.GasCylinderTypes import GasTypes, AddGasType
 from manage_data.views_app.GasCylinderGroups import GasGroups, AddGasGroup

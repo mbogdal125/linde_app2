@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*
 from django.conf.urls import patterns, include, url
 from manage_data.views import customers, add_customer, gas_types, add_gas_type, gas_groups, add_gas_group
 from django.contrib.auth.decorators import login_required

@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*
 from django.views.generic import ListView
 from django.views.generic.edit import FormView
 from linde_app2.models import Customer

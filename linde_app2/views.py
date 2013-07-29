@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*
 # Create your views here.
 from linde_app2.views_app.HomeView import HomeView
 from linde_app2.views_app.StocktakingView import StocktakingView

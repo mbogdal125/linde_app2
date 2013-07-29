@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*
 from django.conf.urls import patterns, include, url
 from linde_app2.views import home_page, stocktaking, stocksheet
 from django.contrib.auth.decorators import login_required

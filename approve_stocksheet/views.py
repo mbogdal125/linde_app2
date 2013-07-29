@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*
 # Create your views here.
 from approve_stocksheet.views_app.ChoseStocktakingView import ChoseStocktakingView
 from approve_stocksheet.views_app.ChoseStocksheetView import ChoseStocksheetView

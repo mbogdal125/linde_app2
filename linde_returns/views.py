@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*
 # Create your views here.
 from linde_returns.views_app.ChoseStocktakingView import ChoseStocktakingView
 from linde_returns.views_app.ChoseStocksheetView import ChoseStocksheetView

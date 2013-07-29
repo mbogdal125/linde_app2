@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*
 
 # for use when you are using django non-rel which needs
 # a little help to be able to execute some 'complex' queries.

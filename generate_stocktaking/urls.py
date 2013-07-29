@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*
 from django.conf.urls import patterns, include, url
 from generate_stocktaking.views import generate_stocktaking
 from django.contrib.auth.decorators import login_required
