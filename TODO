@@ -6,18 +6,16 @@ TODO list:
         ~ single stocksheet generation
         ~ generation for entire stocktaking PDF
 
+- intrgrate_stocktaking:
+    + creating api
+    + the responsibility is opening the file from sap and reading amount_sap data
+    + automatically agreeing data that amount_real = amount_sap
+
 - insert_stocksheet:
     + decorator to view and approve
-    + generating items only if value != 0
-    + paginator
-    + automated agree if all the sap data = amounts_real for stocksheet
-    + automated agree if all the sap data = amounts_real for stocktaking
 
 - agree_stocksheet:
     + decorator to view and approve
-    + show only for the stockitems that very between amount_real and amount_sap
-    + add logic to prevent unwanted changing of data
-    + adding owner to approve operation
 
 - approve information:
     + actual approve logic

@@ -1,11 +1,11 @@
-#-*- coding: utf-8 -*
+#*- coding: utf-8 -*
 from django.http import Http404
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.models import User
 from django.forms.formsets import BaseFormSet
 from django.forms import ModelForm
-from linde_app2.models import StockSheet, StockItem, Stocktaking, StocktakingStatus, InsertOperation
+from linde_app2.models import StockSheet, StockItem, Stocktaking, StocktakingStatus, InsertOperation, GasCylinderType
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.template import RequestContext, loader
@@ -25,8 +25,11 @@ class InsertDataView(TemplateView):
         context = super(InsertDataView, self).get_context_data(**kwargs)
         if "stocksheet_number" in kwargs:
             context['stocksheet_number'] = kwargs['stocksheet_number']
-            context['items'] =  StockItem.objects.filter(id_stock_sheet__stock_sheet_number = kwargs['stocksheet_number'])
+            context['items']= GasCylinderType.objects.all()
             stocksheet = StockSheet.objects.get(stock_sheet_number = kwargs['stocksheet_number'])
+            for i in context['items']:
+                if StockItem.objects.filter(id_stock_sheet=stocksheet, id_gas_cylinder_type=i):
+                    i.amount_real = StockItem.objects.get(id_stock_sheet=stocksheet, id_gas_cylinder_type=i).amount_real
             if stocksheet.status.id > 2:
                 raise Http404
             return context
@@ -43,9 +46,19 @@ class InsertDataView(TemplateView):
             gen_info.save()
             if stocksheet.status.id > 2:
                 raise Http404
-            items = StockItem.objects.filter(id_stock_sheet__stock_sheet_number = kwargs['stocksheet_number'])
+            items = GasCylinderType.objects.all()
             for i in items:
-                StockItem.objects.filter(id = i.id).update(amount_real = post[str(i.id)])
+                if (isinstance(post[str(i.id)],int)) and (post[str(i.id)] != 0):
+                    if StockItem.objects.filter(id_stock_sheet=stocksheet, id_gas_cylinder_type=i):
+                        StockItem.objects.filter(id_stock_sheet=stocksheet, id_gas_cylinder_type=i).update(amount_real=post[str(i.id)])
+                        StockItem.objects.filter(id_stock_sheet=stocksheet, id_gas_cylinder_type=i).update(amount_real_agreed=post[str(i.id)])
+                    else:
+                        cur_item = StockItem()
+                        cur_item.id_gas_cylinder_type = i
+                        cur_item.id_stock_sheet = stocksheet
+                        cur_item.amount_real = post[str(i.id)]
+                        cur_item.amount_real_agreed = post[str(i.id)]
+                        cur_item.save()
             StockSheet.objects.filter(stock_sheet_number=kwargs['stocksheet_number']).update(status=2)
             StockSheet.objects.filter(stock_sheet_number=kwargs['stocksheet_number']).update(stockTakingDate=datetime.now())
         #if its last one we will change stocktaking status to inserted

@@ -2,7 +2,6 @@
 {% load i18n %}
 
 {% block content %}
-    <body>
 	<table class="table table-striped">
 	<tr>
     <td> Numer Arkusza </td> <td> Nazwa Klienta </td> <td> Status </td> <td> Data Inwentaryzacji </td> <td> Notatki </td> <td> Dane </td>
@@ -38,5 +37,4 @@
             <li><a href="{% url "list-customers" page.next_page_number %}">next</a></li>
         {% endif %}
     {% endif %}
-    </body>
 {% endblock %}

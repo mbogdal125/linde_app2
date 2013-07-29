@@ -11,6 +11,7 @@
         <td>Grupa Butli</td>
         <td>Typ Butli</td>
         <td>Ilosc Wpisana</td>
+        <td>Ilosc Sap</td>
         <td>Ilosc Uzgodniona</td>
         </tr>
     {% for item in items %}
@@ -19,6 +20,7 @@
         <td>{{ item.id_gas_cylinder_type.id_gas_cylinder_group.description }}</td>
         <td>{{ item.id_gas_cylinder_type.gas_cylinder_typecol }}</td>
         <td>{{ item.amount_real }}</td>
+        <td>{{ item.amount_sap }}</td>
         <td><input name="{{ item.id }}" type="number" value="{{ item.amount_real_agreed }}"/></td>
         <tr>
     {% endfor %}

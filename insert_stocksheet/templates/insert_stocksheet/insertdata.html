@@ -14,9 +14,9 @@
         </tr>
     {% for item in items %}
         <tr>
-        <td>{{ item.id_gas_cylinder_type.description }}</td>
-        <td>{{ item.id_gas_cylinder_type.id_gas_cylinder_group.description }}</td>
-        <td>{{ item.id_gas_cylinder_type.gas_cylinder_typecol }}</td>
+        <td>{{ item.description }}</td>
+        <td>{{ item.id_gas_cylinder_group.description }}</td>
+        <td>{{ item.gas_cylinder_typecol }}</td>
         <td><input name="number_stocksheet" type="hidden" value={{ number_stocksheet }}>
         <input name="{{ item.id }}" type="number" value="{{ item.amount_real }}"/> </td>
         <tr>
