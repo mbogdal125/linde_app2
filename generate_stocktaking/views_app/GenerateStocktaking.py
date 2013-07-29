@@ -1,7 +1,8 @@
 from django.views.generic import ListView
 from django.views.generic.edit import FormView
-from linde_app2.models import Stocktaking, StocktakingStatus, StocktakingType, Customer, StockSheet, StockSheetStatus, StockItem, GasCylinderType
-from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from linde_app2.models import Stocktaking, StocktakingStatus, StocktakingType, Customer, StockSheet, StockSheetStatus, StockItem, GasCylinderType, GenerateStockTaking
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.template import RequestContext, loader
 from generate_stocktaking.forms import GenStocktakingForm
@@ -21,6 +22,10 @@ class GenerateStocktaking(FormView):
         Staking.status_id = 1
         Staking.active = True
         Staking.save()
+        gen_info = GenerateStockTaking()
+        gen_info.stock_taking = Staking
+        gen_info.operator = get_object_or_404(User, id=self.request.user.id)
+        gen_info.save()
         for cur_cust in Customer.objects.filter(active=True):
             new_sheet = StockSheet()
             if StockSheet.objects.count() == None:

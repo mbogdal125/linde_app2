@@ -1,10 +1,11 @@
 from django.http import Http404
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.models import User
 from django.forms.formsets import BaseFormSet
 from django.forms import ModelForm
-from linde_app2.models import StockSheet, StockItem, Stocktaking, StocktakingStatus
-from django.shortcuts import render, redirect
+from linde_app2.models import StockSheet, StockItem, Stocktaking, StocktakingStatus, InsertOperation
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.template import RequestContext, loader
 from django.forms.formsets import formset_factory
@@ -35,6 +36,10 @@ class InsertDataView(TemplateView):
         post = request._get_post()
         if "stocksheet_number" in kwargs:
             stocksheet = StockSheet.objects.get(stock_sheet_number=kwargs['stocksheet_number'])
+            gen_info = InsertOperation()
+            gen_info.operator = get_object_or_404(User, id=self.request.user.id)
+            gen_info.sheet_id = stocksheet
+            gen_info.save()
             if stocksheet.status.id > 2:
                 raise Http404
             items = StockItem.objects.filter(id_stock_sheet__stock_sheet_number = kwargs['stocksheet_number'])

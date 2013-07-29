@@ -2,8 +2,9 @@ from django.http import Http404
 from django.views.generic import TemplateView
 from django.forms.formsets import BaseFormSet
 from django.forms import ModelForm
-from linde_app2.models import StockSheet, StockItem, Stocktaking, StocktakingStatus
-from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from linde_app2.models import StockSheet, StockItem, Stocktaking, StocktakingStatus, AgreeOperation
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.template import RequestContext, loader
 from django.forms.formsets import formset_factory
@@ -33,6 +34,11 @@ class AgreeDataView(TemplateView):
         response = ""
         post = request._get_post()
         stocksheet = StockSheet.objects.get(stock_sheet_number=kwargs['stocksheet_number'])
+        gen_info = AgreeOperation()
+        gen_info.operator = get_object_or_404(User, id=self.request.user.id)
+        gen_info.sheet_id = stocksheet
+        gen_info.save()
+
         if "stocksheet_number" in kwargs:
             if stocksheet.status.id not in {2,3}:
                 raise Http404

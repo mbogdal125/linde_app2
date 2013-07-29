@@ -20,7 +20,7 @@ class ReturnStocksheetView(FormView):
     
     def form_valid(self, form):
         if "stocksheet_number" in self.kwargs:
-            ssheet =  my_object = get_object_or_404(StockSheet, stock_sheet_number=self.kwargs['stocksheet_number'])
+            ssheet = get_object_or_404(StockSheet, stock_sheet_number=self.kwargs['stocksheet_number'])
             ssheet.status = get_object_or_404(StockSheetStatus, id=100)
             ssheet.save()
             newret = SheetReturn()

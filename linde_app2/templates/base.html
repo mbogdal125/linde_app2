@@ -36,23 +36,23 @@
                     <button class="btn" data-href={% url "returns-chose-stocktaking" %}>{% trans "Zwrot Arkusza" %}</button>
                     <button class="btn" data-href={% url "generate-stocktaking" %}>{% trans "Nowa inwentaryzacja" %}</button>
                     <div class="btn-group">
-                    {% if user.is_authenticated %}
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                           {{ user.username }} <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
                             <li><a href="{% url "logout" %}">{% trans "Logout" %}</a></li>
                         </ul>
-                        {% else %}
-            
-                        {% endif %}
                         </div>
         {% else %}
         {% endif %}
         {% endblock %}
     </div>
     <div id="content">
+        {% if user.is_authenticated %}
         {% block content %}{% endblock %}
+        {% else %}
+        {% block login %}{% endblock %}
+        {% endif %}
     </div>
 
     <div id="footer">

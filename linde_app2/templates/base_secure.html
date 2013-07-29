@@ -21,14 +21,19 @@
 <body>
     <div class="container">
     <div id="header">
+        {% if user.is_authenticated %}
         {% block header %}
         {% endblock %}
+        {% endif %}
     </div>
     <div id="content">
+        {% if user.is_authenticated %}
         {% block content %}
-
-
         {% endblock %}
+        {% else %}
+        {% block login %}
+        {% endblock %}
+        {% endif %}
     </div>
 
     <div id="footer">

@@ -1,7 +1,7 @@
 {% extends "base_secure.html" %}
 {% load i18n %}
 
-{% block content %}
+{% block login %}
         <h1> {% trans "You have been logged out" %} </h1> 
         <a href="{% url "login" %}">{% trans "Login again" %}</a>
 {% endblock %}

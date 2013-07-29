@@ -48,27 +48,26 @@ class StockSheet(models.Model):
     def __unicode__(self):
         return u"%s" % self.stock_sheet_number
 
+class GenerateStockTaking(models.Model):
+    stock_taking = models.ForeignKey('Stocktaking')
+    operator = models.ForeignKey(User)
+    date = models.DateField(default=datetime.now())
+
 class InsertOperation(models.Model):
     sheet_id = models.ForeignKey('StockSheet')
-    insert_operator = models.ForeignKey(User)
-    approve_date = models.DateField()
-    #def __unicode__(self):
-    #    return u"%s" % self.sheet_id
+    operator = models.ForeignKey(User)
+    date = models.DateField(default=datetime.now())
 
 
 class AgreeOperation(models.Model):
     sheet_id = models.ForeignKey('StockSheet')
-    agree_operator = models.ForeignKey(User)
-    agree_date = models.DateField()
-    def __unicode__(self):
-        return u"%s" % self.sheet_id
+    operator = models.ForeignKey(User)
+    date = models.DateField(default=datetime.now())
 
 class ApproveOperation(models.Model):
     sheet_id = models.ForeignKey('StockSheet')
     approve_operator = models.ForeignKey(User)
-    approve_date = models.DateField()
-    def __unicode__(self):
-        return u"%s" % self.sheet_id
+    approve_date = models.DateField(default=datetime.now())
 
 class StockSheetStatus(models.Model):
     description = models.TextField()
